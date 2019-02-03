@@ -2,7 +2,450 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "apps-abm": {
+      "root": "apps/apps/abm/",
+      "sourceRoot": "apps/apps/abm/src",
+      "projectType": "application",
+      "prefix": "abm-workspace",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/apps/abm",
+            "index": "apps/apps/abm/src/index.html",
+            "main": "apps/apps/abm/src/main.ts",
+            "polyfills": "apps/apps/abm/src/polyfills.ts",
+            "tsConfig": "apps/apps/abm/tsconfig.app.json",
+            "assets": [
+              "apps/apps/abm/src/favicon.ico",
+              "apps/apps/abm/src/assets"
+            ],
+            "styles": [
+              "apps/apps/abm/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/apps/abm/src/environments/environment.ts",
+                  "with": "apps/apps/abm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "apps-abm:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "apps-abm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "apps-abm:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/apps/abm/src/test.ts",
+            "polyfills": "apps/apps/abm/src/polyfills.ts",
+            "tsConfig": "apps/apps/abm/tsconfig.spec.json",
+            "karmaConfig": "apps/apps/abm/karma.conf.js",
+            "styles": [
+              "apps/apps/abm/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/apps/abm/src/favicon.ico",
+              "apps/apps/abm/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/apps/abm/tsconfig.app.json",
+              "apps/apps/abm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "apps-abm-e2e": {
+      "root": "apps/apps/abm-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/apps/abm-e2e/cypress.json",
+            "tsConfig": "apps/apps/abm-e2e/tsconfig.e2e.json",
+            "devServerTarget": "apps-abm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "apps-abm:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/apps/abm-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "abm": {
+      "root": "apps/abm/",
+      "sourceRoot": "apps/abm/src",
+      "projectType": "application",
+      "prefix": "abm-workspace",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/abm",
+            "index": "apps/abm/src/index.html",
+            "main": "apps/abm/src/main.ts",
+            "polyfills": "apps/abm/src/polyfills.ts",
+            "tsConfig": "apps/abm/tsconfig.app.json",
+            "assets": [
+              "apps/abm/src/favicon.ico",
+              "apps/abm/src/assets"
+            ],
+            "styles": [
+              "apps/abm/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/abm/src/environments/environment.ts",
+                  "with": "apps/abm/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "abm:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "abm:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "abm:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/abm/src/test.ts",
+            "polyfills": "apps/abm/src/polyfills.ts",
+            "tsConfig": "apps/abm/tsconfig.spec.json",
+            "karmaConfig": "apps/abm/karma.conf.js",
+            "styles": [
+              "apps/abm/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/abm/src/favicon.ico",
+              "apps/abm/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/abm/tsconfig.app.json",
+              "apps/abm/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "abm-e2e": {
+      "root": "apps/abm-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/abm-e2e/cypress.json",
+            "tsConfig": "apps/abm-e2e/tsconfig.e2e.json",
+            "devServerTarget": "abm:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "abm:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/abm-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "abm-admin": {
+      "root": "apps/abm-admin/",
+      "sourceRoot": "apps/abm-admin/src",
+      "projectType": "application",
+      "prefix": "abm-workspace",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/abm-admin",
+            "index": "apps/abm-admin/src/index.html",
+            "main": "apps/abm-admin/src/main.ts",
+            "polyfills": "apps/abm-admin/src/polyfills.ts",
+            "tsConfig": "apps/abm-admin/tsconfig.app.json",
+            "assets": [
+              "apps/abm-admin/src/favicon.ico",
+              "apps/abm-admin/src/assets"
+            ],
+            "styles": [
+              "apps/abm-admin/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/abm-admin/src/environments/environment.ts",
+                  "with": "apps/abm-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "abm-admin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "abm-admin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "abm-admin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/abm-admin/src/test.ts",
+            "polyfills": "apps/abm-admin/src/polyfills.ts",
+            "tsConfig": "apps/abm-admin/tsconfig.spec.json",
+            "karmaConfig": "apps/abm-admin/karma.conf.js",
+            "styles": [
+              "apps/abm-admin/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/abm-admin/src/favicon.ico",
+              "apps/abm-admin/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/abm-admin/tsconfig.app.json",
+              "apps/abm-admin/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "abm-admin-e2e": {
+      "root": "apps/abm-admin-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/abm-admin-e2e/cypress.json",
+            "tsConfig": "apps/abm-admin-e2e/tsconfig.e2e.json",
+            "devServerTarget": "abm-admin:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "abm-admin:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/abm-admin-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "nestjs-app": {
+      "root": "apps/nestjs-app",
+      "sourceRoot": "apps/nestjs-app/src",
+      "projectType": "application",
+      "prefix": "nestjs-app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/nestjs-app",
+            "main": "apps/nestjs-app/src/main.ts",
+            "tsConfig": "apps/nestjs-app/tsconfig.app.json",
+            "assets": [
+              "apps/nestjs-app/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/nestjs-app/src/environments/environment.ts",
+                  "with": "apps/nestjs-app/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "nestjs-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/nestjs-app/tsconfig.app.json",
+              "apps/nestjs-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/nestjs-app/jest.config.js",
+            "tsConfig": "apps/nestjs-app/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -11,5 +454,6 @@
     "defaultCollection": "@nrwl/schematics",
     "packageManager": "npm"
   },
-  "schematics": {}
+  "schematics": {},
+  "defaultProject": "apps-abm"
 }

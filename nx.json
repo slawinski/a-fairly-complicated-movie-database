@@ -7,5 +7,27 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "apps-abm": {
+      "tags": []
+    },
+    "apps-abm-e2e": {
+      "tags": []
+    },
+    "abm": {
+      "tags": []
+    },
+    "abm-e2e": {
+      "tags": []
+    },
+    "abm-admin": {
+      "tags": []
+    },
+    "abm-admin-e2e": {
+      "tags": []
+    },
+    "nestjs-app": {
+      "tags": []
+    }
+  }
 }
